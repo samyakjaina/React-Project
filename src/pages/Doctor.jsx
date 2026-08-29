@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 function Doctor(props){
-//   useEffect(() => {
-//     console.log(props);
-//   }, [props]); 
+
     return (
         <div>
         <h1>Doctor : {props.data.user.name}, Age: {props.data.user.age}</h1>
