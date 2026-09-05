@@ -1,28 +1,34 @@
- import { Routes, Route } from "react-router-dom";
- import Home from "../pages/Home";
+import { Routes, Route } from "react-router-dom";
+import Home from "../pages/Home";
 import Health from "../pages/Health";
 import About from "../pages/About";
-import Login from "../login/login";
+import Login from "../user/login";
+import ErrorPage from "../error/ErrorPage";
+import AppLayout from "../pages/HomePage/AppLayout";
+import ProtectedRoute from "../auth/ProtectedRoute.jsx";
+function RoutePages() {
+  return (
+    <div>
+      <Routes>
+        <Route path="/login" element={<Login />} />
 
- function RoutePages() {  
-    return (
-        <div>
-            <Routes>
+       <Route element={<ProtectedRoute />}>
+        <Route path="/" element={<AppLayout />} >
+         <Route index element={<Home />} />
+          <Route
+            path="health"
+            element={<Health />}
+          />
 
-            <Route path="/home" element={<Home />} />
-
-            <Route
-              path="/health"
-              element={<Health />}
-            />
-
-            <Route
-              path="/about"
-              element={<About />}
-            />
-            <Route path = "/login" element = {<Login />} />  
-          </Routes>
-        </div>
-    );
-  }
+          <Route
+            path="about"
+            element={<About />}
+          />
+        </Route>
+        </Route>
+        <Route path="/*" element={<ErrorPage />} />
+      </Routes>
+    </div>
+  );
+}
 export default RoutePages;

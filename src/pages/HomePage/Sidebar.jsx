@@ -7,9 +7,9 @@ function Sidebar() {
       <h2>My Application</h2>
 
       <nav>
-        <NavLink to="/home" className="sidebar-button">
+        {/* <NavLink to="/home" className="sidebar-button">
           Home
-        </NavLink>
+        </NavLink> */}
 
         <NavLink to="/health" className="sidebar-button">
           Health Check
@@ -18,6 +18,7 @@ function Sidebar() {
         <NavLink to="/about" className="sidebar-button">
           About
         </NavLink>
+        
       </nav>
 
     </div>

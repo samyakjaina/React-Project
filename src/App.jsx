@@ -13,7 +13,6 @@ function App() {
 
         <RoutePages/>
 
-        {/* </main> */}
 
       </div>
 

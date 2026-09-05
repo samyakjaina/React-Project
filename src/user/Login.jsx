@@ -8,7 +8,7 @@ import { setCredentials } from "../redux/AuthSlice.jsx";
 
 const LOGIN_API_URL = "http://localhost:8080/login/signin";
 
-function Login ()  {
+function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ function Login ()  {
 
       setAuthenticatedSession(responseBody);
       // dispatch(setCredentials(responseBody));
-      navigate("/health");
+      navigate("/");
 
       return {
         message: "Login successful!",
