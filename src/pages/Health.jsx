@@ -12,8 +12,8 @@ function Health() {
   // const accessToken = useSelector(
   //       (state) => state.auth.accessToken
   //   );
-    const accessToken = useContext(AuthContext).authenticatedSession.accessToken;
-    console.log("Access Token from Context Store:", accessToken);
+    // const accessToken = useContext(AuthContext).authenticatedSession.accessToken;
+    // console.log("Access Token from Context Store:", accessToken);
   
   const checkHealth = async () => {
 

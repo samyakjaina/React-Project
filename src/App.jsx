@@ -1,10 +1,6 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
-import Sidebar from "./components/Sidebar";
-import Home from "./pages/Home";
-import Health from "./pages/Health";
-import About from "./pages/About";
-import Login from "./login/login";
+import RoutePages from "./Route/RoutePages.jsx";
 
 
 function App() {
@@ -15,21 +11,7 @@ function App() {
 
         {/* <main className="content"> */}
 
-          <Routes>
-
-            <Route path="/home" element={<Home />} />
-
-            <Route
-              path="/health"
-              element={<Health />}
-            />
-
-            <Route
-              path="/about"
-              element={<About />}
-            />
-            <Route path = "/login" element = {<Login />} />  
-          </Routes>
+        <RoutePages/>
 
         {/* </main> */}
 
