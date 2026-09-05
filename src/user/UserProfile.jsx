@@ -3,10 +3,10 @@ import { UseAuth } from "../auth/UseAuth.jsx";
 
 function UserProfile() {
   const navigate = useNavigate();
-  const { setAuthenticatedSession } = UseAuth();
-
-  function handleLogout() {
-    setAuthenticatedSession(null);
+  const { logout ,authenticatedSession} = UseAuth();
+  console.log("Authenticated session in UserProfile:", authenticatedSession);
+  async function handleLogout() {
+    await logout();
     navigate("/login");
   }
 
@@ -17,7 +17,7 @@ function UserProfile() {
       </button>
 
       <div className="profile-dropdown">
-        <button onClick={() => navigate("/profile")}>Profile</button>
+        <button onClick={() => navigate("/profile")}>{authenticatedSession?.username || "Profile"}</button>
         <button onClick={() => navigate("/settings")}>Settings</button>
         <button onClick={handleLogout}>Logout</button>
       </div>

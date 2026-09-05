@@ -1,15 +1,16 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { UseAuth } from "./UseAuth.jsx";
-import { Outlet } from "react-router-dom";
 
-function ProtectedRoute({ children }) {
-  const { authenticatedSession } = UseAuth();
-  console.log("ProtectedRoute: authenticatedSession:", authenticatedSession);
+function ProtectedRoute() {
+  const { authenticatedSession, isLoading } = UseAuth();
+
+  if (isLoading) {
+    return <p>Checking authentication...</p>;
+  }
 
   if (!authenticatedSession) {
     return <Navigate to="/login" replace />;
-  }     
+  }
 
   return <Outlet />;
 }
