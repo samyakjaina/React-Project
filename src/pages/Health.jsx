@@ -23,7 +23,10 @@ function Health() {
     try {
 
       const response = await fetch(
-        "http://localhost:8080/product/api/health"
+        "http://localhost:8080/product/api/health",{
+          method: "GET",
+          credentials: "include"
+        }
       );
 
       if (!response.ok) {

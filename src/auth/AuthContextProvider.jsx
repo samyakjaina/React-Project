@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AuthContext } from "./Context.jsx";
+import { apiFetch } from "../api/apiClient.js";
 
 export function AuthContextProvider({ children }) {
   const [authenticatedSession, setAuthenticatedSession] = useState(null);
@@ -8,9 +9,13 @@ export function AuthContextProvider({ children }) {
   useEffect(() => {
     async function restoreSession() {
       try {
-        const response = await fetch("http://localhost:8080/login/me", {
-          credentials: "include",
-        });
+        // await apiFetch("/login/csrf");
+        let response = await apiFetch("/login/me");
+
+        if (response.status === 401) {
+          const refreshResponse = await apiFetch("/login/refresh", { method: "POST" });
+          if (refreshResponse.ok) response = await apiFetch("/login/me");
+        }
 
         if (response.ok) {
           setAuthenticatedSession(await response.json());
@@ -26,10 +31,7 @@ export function AuthContextProvider({ children }) {
   }, []);
 
   async function logout() {
-    await fetch("http://localhost:8080/login/logout", {
-      method: "POST",
-      credentials: "include",
-    });
+    await apiFetch("/login/logout", { method: "POST" });
     setAuthenticatedSession(null);
   }
 
