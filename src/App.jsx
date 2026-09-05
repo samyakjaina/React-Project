@@ -4,21 +4,20 @@ import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
 import Health from "./pages/Health";
 import About from "./pages/About";
+import Login from "./login/login";
 
 
 function App() {
   return (
     <BrowserRouter>
+      <div >
+        {/* <Login /> */}
 
-      <div className="app">
-
-        <Sidebar />
-
-        <main className="content">
+        {/* <main className="content"> */}
 
           <Routes>
 
-            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
 
             <Route
               path="/health"
@@ -29,10 +28,10 @@ function App() {
               path="/about"
               element={<About />}
             />
-
+            <Route path = "/login" element = {<Login />} />  
           </Routes>
 
-        </main>
+        {/* </main> */}
 
       </div>
 

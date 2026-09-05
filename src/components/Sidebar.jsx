@@ -7,7 +7,7 @@ function Sidebar() {
       <h2>My Application</h2>
 
       <nav>
-        <NavLink to="/" className="sidebar-button">
+        <NavLink to="/home" className="sidebar-button">
           Home
         </NavLink>
 

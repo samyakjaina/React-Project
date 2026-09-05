@@ -1,12 +1,19 @@
 import { useState } from "react";
 import Hospital from "./Hospital.jsx";
+import { useSelector } from "react-redux";
+import { useContext } from "react";
+import { AuthContext } from "../auth/Context.jsx";
 function Health() {
 
   const [healthStatus, setHealthStatus] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
-
+  // const apiRequest = useApiClient();
+  // const accessToken = useSelector(
+  //       (state) => state.auth.accessToken
+  //   );
+    const accessToken = useContext(AuthContext).authenticatedSession.accessToken;
+    console.log("Access Token from Context Store:", accessToken);
   
   const checkHealth = async () => {
 
@@ -16,7 +23,7 @@ function Health() {
     try {
 
       const response = await fetch(
-        "http://localhost:8080/api/health"
+        "http://localhost:8080/product/api/health"
       );
 
       if (!response.ok) {
